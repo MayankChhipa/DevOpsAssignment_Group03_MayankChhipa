@@ -64,3 +64,139 @@ Manual regression across browsers does not scale with frequent deployments. Sele
 ## Key takeaway for our case study
 
 Selenium is the **browser automation layer** in DevOps — it validates user-facing behaviour in CI/CD, complements other test types owned by the team, and supports continuous delivery with automated UI regression.
+
+# Testing in DevOps — Playwright's Role
+
+## What is DevOps testing?
+
+In DevOps, testing is **automated, continuous, and integrated into the delivery pipeline** rather than being a final step before release.
+
+Goals:
+
+* Catch bugs early
+* Prevent regressions
+* Give fast feedback
+* Block bad builds
+* Validate the application from the user's perspective
+
+A simplified flow is:
+
+```text
+Code → Build → Test → Deploy → Verify → Release
+```
+
+## Where Playwright fits
+
+A DevOps strategy uses multiple testing layers. Teammates may handle unit, API, integration, or performance testing; **our focus is Playwright** for:
+
+* **UI / functional testing** — buttons, forms, navigation, login
+* **E2E testing** — complete user journeys
+* **Smoke testing** — critical paths
+* **Regression testing** — existing features after changes
+* **Cross-browser testing** — Chromium, Firefox, WebKit
+
+Playwright answers:
+
+> **"Does the application work correctly from the user's perspective in the browser?"**
+
+## Why Playwright?
+
+Unlike basic browser automation, Playwright provides several built-in capabilities that make modern UI testing easier.
+
+### Auto-waiting
+
+Playwright automatically waits for many required conditions before performing actions.
+
+```javascript
+await page.getByRole('button', { name: 'Login' }).click();
+```
+
+This reduces the need for arbitrary delays such as `waitForTimeout()` and helps make tests more reliable.
+
+### Browser Contexts
+
+Tests can run in isolated browser contexts:
+
+```text
+Browser
+├── Context A → User/Test A
+├── Context B → User/Test B
+└── Context C → User/Test C
+```
+
+Each context can have separate cookies, storage, and authentication state, making independent and parallel testing easier.
+
+## The feedback loop
+
+```text
+Code change
+     ↓
+   Build
+     ↓
+Test Environment
+     ↓
+Playwright Tests
+     ↓
+   Report
+   ↙     ↘
+PASS     FAIL
+ ↓         ↓
+Continue   Fix
+```
+
+If critical Playwright tests fail, they can act as a **quality gate** and prevent the pipeline from continuing.
+
+## CI/CD Integration
+
+Playwright can run automatically with CI/CD platforms such as:
+
+* GitHub Actions
+* Jenkins
+* GitLab CI
+* Azure DevOps
+
+A common strategy is to run a **small smoke suite on every PR** and a **larger regression suite on staging, nightly, or before release**.
+
+## Debugging failed tests
+
+Playwright can provide:
+
+* Screenshots
+* Video recordings
+* Trace Viewer
+* Test reports
+* Browser and network information
+
+This helps the team understand **why** a test failed instead of only seeing `TEST FAILED`.
+
+## Parallel & Cross-Browser Testing
+
+Playwright supports parallel execution to reduce test-suite execution time.
+
+It can also run the same scenarios across:
+
+```text
+        Playwright
+       /    |     \
+ Chromium Firefox WebKit
+```
+
+This helps detect browser-specific issues before users encounter them.
+
+## Testing vs Monitoring
+
+| Testing                      | Monitoring                |
+| ---------------------------- | ------------------------- |
+| Before/during release        | Production                |
+| Validates expected behaviour | Detects real-world issues |
+| CI/CD automation             | Logs, alerts, APM         |
+
+Both are important: **Playwright catches UI problems before release, while monitoring detects issues that occur in production.**
+
+## Key takeaway for our case study
+
+Playwright is the **browser automation layer** in our DevOps strategy.
+
+It combines **browser automation, auto-waiting, isolated contexts, parallel execution, cross-browser testing, debugging, and CI/CD integration** to make automated UI testing more reliable.
+
+> **The goal is not just to automate clicks — it is to continuously verify real user journeys before they reach production.**
