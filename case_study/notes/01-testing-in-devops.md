@@ -44,7 +44,7 @@ If Selenium tests fail, the pipeline should **fail the build** or block promotio
 
 ## Testing vs monitoring
 
-![Testing vs Monitoring](images/testing-vs-monitoring.svg)
+![Testing vs Monitoring](case_study/images/testing-vs-monitoring.svg)
 
 | Testing (Selenium) | Monitoring |
 |--------------------|------------|
@@ -102,7 +102,7 @@ They run constantly—often locally on the developer's machine *before* they eve
 
 ## The Feedback Loop
 
-![DevOps Feedback Loop](images/feedback-loop.svg)
+![DevOps Feedback Loop](case_study/images/feedback-loop.svg)
 
 **Code change → Compile → JUnit tests → Build Application (JAR/WAR) → Deploy → UI tests**
 
