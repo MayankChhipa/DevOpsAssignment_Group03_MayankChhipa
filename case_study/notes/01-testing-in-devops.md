@@ -44,6 +44,8 @@ If Selenium tests fail, the pipeline should **fail the build** or block promotio
 
 ## Testing vs monitoring
 
+![Testing vs Monitoring](../images/testing-vs-monitoring.svg)
+
 | Testing (Selenium) | Monitoring |
 |--------------------|------------|
 | Runs before/during release in controlled env | Runs in production |
@@ -65,6 +67,48 @@ Manual regression across browsers does not scale with frequent deployments. Sele
 
 Selenium is the **browser automation layer** in DevOps — it validates user-facing behaviour in CI/CD, complements other test types owned by the team, and supports continuous delivery with automated UI regression.
 
+# Where JUnit Fits in a DevOps Test Strategy
+
+A full DevOps test strategy uses multiple layers. While teammates may cover UI tests (Selenium), API tests, or performance tests, our core focus is **JUnit** for the following:
+
+*   **Unit Testing:** Testing individual methods, functions, and classes in complete isolation (often using mocks).
+*   **Integration Testing:** Verifying that different components (like a service and a database) work together correctly.
+*   **Code Coverage:** Pairing with tools like JaCoCo to ensure a high percentage of the codebase is actually tested.
+*   **Build Validation:** Failing the build immediately if the core logic is broken.
+
+> **The Core Purpose:**
+> JUnit executes Java code directly. It answers the fundamental question: *"Does this specific piece of code do exactly what the developer intended at a foundational level?"*
+
+---
+
+## Shift-Left vs. Shift-Right Testing
+
+| Layer | Typical Tool (Team) | When it Runs |
+| :--- | :--- | :--- |
+| **Unit / Component** | **JUnit (us)** | Every commit / PR build — *fastest* |
+| **API / Integration** | Postman, REST Assured | CI on merge |
+| **UI / E2E** | Selenium (teammates) | CI (smoke) or staging (full suite) |
+| **Performance / Load** | JMeter, k6, etc. | Staging / scheduled |
+
+---
+
+## The Ultimate "Shift-Left" Tool
+
+JUnit is the ultimate **"shift-left"** tool. Because unit tests run in milliseconds without needing a fully deployed environment or a browser, they form the massive foundation of the **"Test Pyramid."** 
+
+They run constantly—often locally on the developer's machine *before* they even push the code.
+
+---
+
+## The Feedback Loop
+
+![DevOps Feedback Loop](../images/feedback-loop.svg)
+
+**Code change → Compile → JUnit tests → Build Application (JAR/WAR) → Deploy → UI tests**
+
+If JUnit tests fail, the pipeline halts immediately before any deployment happens. It is the very first quality gate in the CI/CD process.
+
+---
 # Testing in DevOps — Playwright's Role
 
 ## What is DevOps testing?
