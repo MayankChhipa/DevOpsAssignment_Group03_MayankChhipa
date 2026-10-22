@@ -1,56 +1,102 @@
-# Case Study
-# DevOps Testing Tools: JUnit vs. Apache JMeter
 
-This repository contains documentation and reference materials comparing two essential testing tools used in DevOps pipelines: **JUnit** for unit/functional testing and **Apache JMeter** for performance/load testing.
+Conversation with Gemini
+# DevOps Group 03 Assignment
 
----
 
-## Overview
 
-In a continuous integration and continuous deployment (CI/CD) strategy, automated testing ensures both software correctness and operational resilience. While **JUnit** operates early in the cycle (*Shift-Left*) to validate individual unit logic, **Apache JMeter** evaluates system performance, throughput, and scalability under heavy user traffic.
+A comprehensive DevOps automated testing suite integrating unit, performance, and end-to-end (E2E) testing frameworks. This assignment establishes a robust quality assurance and build validation pipeline using industry-standard tools across different layers of application testing.
 
----
 
-## 1. JUnit (Unit & Integration Testing)
-
-**JUnit** is an open-source unit testing framework for the Java programming language. It enables developers to write and run repeatable, automated tests directly against individual functions, classes, or modules of code.
-
-### Core Focus
-* **Testing Level:** Low-level testing (Unit testing, component testing, basic integration).
-* **Primary Target:** Individual methods, functions, and application code logic.
-* **Primary Users:** Developers during active coding.
-
-### Key Characteristics
-* **Shift-Left Testing:** Runs early in the development process (as soon as code is written).
-* **Code-Based:** Written using Java annotations (e.g., `@Test`, `@BeforeEach`, `@AfterEach`, `@Assert`).
-* **Fast Execution:** Executes in milliseconds, providing immediate feedback on code correctness.
-
-### Role in DevOps & CI/CD
-In a Continuous Integration (CI) pipeline (e.g., Jenkins, GitHub Actions, GitLab CI):
-1. A developer commits new code.
-2. The CI server triggers an automated build.
-3. **JUnit** runs instantly to verify that changes haven't broken existing logic (preventing regressions).
-4. If a JUnit test fails, the build breaks immediately, preventing faulty code from reaching staging environments.
 
 ---
 
-## 2. Apache JMeter (Performance & Load Testing)
 
-**Apache JMeter** is an open-source, 100% Java-based tool designed to measure application performance and load handling under simulated user traffic.
 
-### Core Focus
-* **Testing Level:** High-level system testing (Performance, Load, Stress, API, and Scalability testing).
-* **Primary Target:** Web applications, REST/SOAP APIs, databases, FTP, and web servers.
-* **Primary Users:** Performance engineers, QA engineers, and DevOps specialists.
+## Technologies Used
 
-### Key Characteristics
-* **Virtual User Simulation:** Generates concurrent virtual users (threads) sending HTTP/HTTPS requests to test system capacity under high traffic.
-* **GUI & CLI Modes:** Offers a Graphical User Interface (GUI) for constructing test plans and a Command-Line (CLI) non-GUI mode for headless execution in automated environments.
-* **Protocol Support:** Supports HTTP/S, JDBC (Databases), JMS, FTP, LDAP, and WebSockets.
 
-### Role in DevOps & CI/CD
-In a Continuous Delivery (CD) pipeline:
-1. Triggered after code passes unit/integration tests and deploys to a staging/pre-production environment.
-2. **JMeter** executes automated performance tests (typically via CLI mode triggered by Maven/Gradle or CI scripts).
-3. Measures key metrics such as **Response Time**, **Throughput (requests/sec)**, **Error Rates**, and **Resource Utilization**.
-4. If response times exceed defined SLAs (e.g., average latency > 500ms under 1,000 concurrent requests), the pipeline flags a performance regression.
+
+![JUnit](https://img.shields.io/badge/JUnit5-25A162?style=for-the-badge&logo=junit5&logoColor=white)
+
+![Apache JMeter](https://img.shields.io/badge/Apache%20JMeter-D22128?style=for-the-badge&logo=apachejmeter&logoColor=white)
+
+![Selenium](https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white)
+
+![Playwright](https://img.shields.io/badge/Playwright-2EAD33?style=for-the-badge&logo=playwright&logoColor=white)
+
+![VSCode](https://img.shields.io/badge/VSCode-0078D4?style=for-the-badge&logo=visualstudiocode&logoColor=white)
+
+
+
+*Comma-separated list:* `JUnit`, `Apache JMeter`, `Selenium`, `Playwright`, `VS Code`
+
+
+
+---
+
+## Features
+
+
+
+* **Unit & Component Testing (JUnit):** Verifies individual methods and business logic in isolation to catch regressions early.
+
+* **Performance & Load Testing (JMeter):** Simulates concurrent user traffic to measure system throughput, latency, and resource utilization.
+
+* **Browser Automation & Cross-Browser E2E (Selenium):** Automates legacy and modern browser interactions to ensure UI consistency across platforms.
+
+* **Modern End-to-End Testing (Playwright):** Fast, reliable, headless/headed web testing with auto-wait capabilities and trace recording.
+
+* **Automated Build Validation:** Streamlines test execution to validate stability before code integration.
+
+
+
+---
+
+
+### Prerequisites
+
+* **Java Development Kit (JDK 11+ or 17+)**
+
+* **Node.js (v18+) & npm**
+
+* **Apache JMeter (v5.6+)**
+
+* **Maven / Gradle** (for Java dependencies)
+
+
+
+### Execution Proof & Test Reports
+
+> **Note:** Below are placeholders for screenshots demonstrating successful test execution runs and HTML reports.
+
+>
+
+> *Screenshot 1: JUnit *
+
+> ![JUnit](refrence_video/JUnit_Testing_1.mp4)
+
+>
+
+---
+
+
+
+## Team & Contributors
+
+
+
+* **Mayank Chhipa**
+
+* **Naitik Tiwari**
+
+* **Pranay Amar**
+
+* **Mohit Garg**
+
+* **Mohit Chouhan**
+
+* **Pranjal Sharma**
+
+* **Prasann**
+
+---
