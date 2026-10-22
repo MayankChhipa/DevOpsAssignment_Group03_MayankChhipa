@@ -1,0 +1,14 @@
+# Docker Compose file for Practical 9
+# Aim: To launch an application service using a Compose configuration.
+# Run with: docker compose up -d
+# Stop with: docker compose down
+
+services:
+  web:
+    image: nginx:latest
+    container_name: compose-nginx
+    ports:
+      - "8082:80"
+    volumes:
+      - ./html:/usr/share/nginx/html:ro
+    restart: always
